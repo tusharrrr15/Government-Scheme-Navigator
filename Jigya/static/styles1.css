@@ -1,0 +1,265 @@
+/* General Styles */
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body,
+  html {
+    /* background-image: url('imges/1-full.webp');
+    background-size: cover;
+    background-repeat:no-repeat;
+    height:20px;
+    width:20px; */
+    /* font-family: Arial, sans-serif; */
+    margin: 0;
+    padding: 0;
+    background-color: #eeee;
+  
+  }
+  #sj img{
+    width:40px;
+  }
+  .logo img{
+        width:10rem;
+        margin-right:35rem;
+  }
+  .search {
+    display: flex;
+  
+  }
+  
+  .search input {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 20rem;
+    border: 2px solid black;
+    padding: 10px;
+    font-size: 1rem;
+  
+  }
+  
+  .search i {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(217, 158, 49);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+  }
+  
+  header {
+    color: black;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  header a {
+    font-family: "Platypi", serif;
+    color: #34495e;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+  main {
+    position: relative;
+    top: 6rem;
+    padding: 20px;
+    max-width: 900px;
+    margin: 70px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  main h1 {
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    color: #34495e;
+  }
+  
+  main p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #7f8c8d;
+  }
+  
+  ul li {
+    color: #34495e;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    list-style: none;
+  }
+  
+  ul li:hover {
+    color: red;
+  }
+  
+  /* images */
+  .images img {
+    width: 100%;
+    height: 90vh;
+  
+  }
+  
+  .view {
+    /* position: relative;
+    top: 6rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+  }
+  
+  .view button {
+    position: absolute;
+    bottom: 10rem;
+    right: 5rem;
+    font-weight: 500;
+    border: none;
+    background-color: green;
+    opacity: 0.86;
+    color: #eeee;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .view button:hover {
+    cursor: pointer;
+  }
+  
+  /* Dropdown and Button Styles */
+  .scheme-toggle,
+  .visit-button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  .scheme-toggle {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .scheme-toggle:hover {
+    background-color: #2980b9;
+  }
+  
+  .visit-button {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+  
+  .visit-button:hover {
+    background-color: #27ae60;
+  }
+  
+  .scheme-details {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    margin-top: 5px;
+  }
+  
+  #scheme-form {
+    padding: 2rem;
+    font-size:1.2rem;
+    font-weight:500;
+  }
+  
+  #scheme-form #space1 {
+    margin-top: 1rem;
+    width: 10rem;
+    height: 1.8rem;
+    font-size: 1rem;
+    background-color: green;
+    color: #ffff;
+  }
+  #schemes button{
+      margin:0;
+      margin-bottom: 1rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+  }
+  .space{
+    margin-top:1rem;
+  }
+  /* Help button */
+  #help-button {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  #help-button:hover {
+    background-color: #0056b3;
+  }
+  
+  footer {
+    background-color: black;
+    opacity: 0.85;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    height: 20px;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    width: 100%;
+  }
+  
+  /* Navigation styles */
+  .nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 20px;
+  }
+  
+  nav ul li a:hover {
+    color: #b4c6cf;
+  }

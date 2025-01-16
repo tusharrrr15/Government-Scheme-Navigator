@@ -1,0 +1,73 @@
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+from urllib.parse import quote  # Import quote for URL encoding if needed
+
+app = Flask(__name__)
+
+schemes_data = {
+    "Maharashtra": {
+        "Male": [
+            {
+                "name": "Jalyukta Shivar Yojana",
+                "link": "https://en.wikipedia.org/wiki/Jalyukt_Shivar_Abhiyan",
+                "information": "The Jalyukta Shivar Yojana aims to make villages drought-free in Maharashtra. The scheme involves building water conservation structures and creating sustainable water management solutions."
+            },
+            {
+                "name": "Pradhan Mantri Awas Yojana",
+                "link": "https://pmay-urban.gov.in/",
+                "information": "Pradhan Mantri Awas Yojana aims to provide affordable housing for urban and rural poor. It focuses on slum redevelopment, credit-linked subsidies, and affordable housing projects."
+            }
+        ],
+        "Female": [
+            {
+                "name": "Mahila Shakti Kendra Scheme",
+                "link": "https://wcd.nic.in/schemes-list/mahila-shakti-kendra-scheme",
+                "information": "The Mahila Shakti Kendra Scheme focuses on empowering rural women through skill development, employment opportunities, and access to information and resources."
+            },
+            {
+                "name": "Tejaswini Scheme",
+                "link": "https://wcd.nic.in/schemes-list/tejaswini-scheme",
+                "information": "The Tejaswini Scheme supports women's empowerment through financial assistance, training programs, and self-help groups for economic independence."
+            }
+        ]
+    },
+    
+    
+    
+    # Add similar entries for Telangana, Karnataka, and Uttar Pradesh
+}
+
+
+
+@app.route('/')
+def index():
+    return render_template('index1.html')
+
+@app.route('/schemes')
+def render_schemes():
+    return render_template('index2.html')
+
+@app.route('/get_schemes', methods=['POST'])
+def get_schemes():
+    state = request.form.get('state')
+    gender = request.form.get('gender')
+    
+    if state and gender:
+        schemes = schemes_data.get(state, {}).get(gender, [])
+        return jsonify({'schemes': schemes, 'state': state, 'gender': gender})
+    else:
+        return jsonify({'error': 'Invalid state or gender'})
+
+@app.route('/index3.html')
+def render_index3():
+    state = request.args.get('state')
+    gender = request.args.get('gender')
+
+    if not state or not gender:
+        return redirect(url_for('index')) 
+
+    schemes = schemes_data.get(state, {}).get(gender, [])
+    return render_template('index3.html', state=state, schemes=schemes)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

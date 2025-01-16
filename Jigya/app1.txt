@@ -1,0 +1,57 @@
+import openai
+import pandas as pd
+
+openai.api_key = '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'
+
+def gpt3_query(query, data):
+    try:
+        
+        data_summary = data.head(100).to_string(index=False) 
+
+        prompt = f"""
+        User query: {query}
+        Data context:
+        {data_summary}
+        
+        Provide a response to the user's query based on the data context.
+        """
+        
+        response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',  
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant who can answer questions based on provided data."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=150
+        )
+        
+        
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print(f"OpenAI API error: {e}")
+        return "Sorry, I'm unable to process your request right now."
+
+
+def handle_query(query, data):
+    
+    response = gpt3_query(query, data)
+    return response
+
+def chat_interface(data):
+    print("Welcome to the Government Scheme Navigator interface!")
+    print("You can ask questions about the schemes in the data.")
+
+    while True:
+        
+        query = input("\nYou: ")
+
+        if query.lower() in ["exit", "quit"]:
+            print("Goodbye!")
+            break
+        
+        response = handle_query(query, data)
+        print(f"\nBot: {response}")
+
+df = pd.read_csv('schemes.csv')
+
+chat_interface(df)

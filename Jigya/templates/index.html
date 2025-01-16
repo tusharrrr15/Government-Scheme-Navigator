@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 200px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="static\styles1.css">
+    <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Catamaran:wght@200&family=Courgette&family=Edu+TAS+Beginner:wght@700&family=Lato:wght@300;900&family=Mukta:wght@700&family=Mulish:wght@300&family=Open+Sans&family=PT+Sans:ital,wght@1,700&family=Poppins:wght@300&family=Raleway:wght@100&family=Roboto&family=Roboto+Condensed:wght@700&family=Roboto+Slab&display=swap"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=DM+Serif+Display&family=Martel:wght@900&family=Platypi:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;600&family=Protest+Strike&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,500;1,700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Government Scheme Navigator</h1>
+        <input type="text" id="query" placeholder="Enter your query...">
+        <button onclick="sendQuery()">Send</button>
+        <div id="response" class="response"></div>
+    </div>
+
+    <header>
+        <div id="sj">
+          <img src="/static/sj.svg">
+        </div>
+        <div class="logo">
+          <img src="/static/myscheme-logo-black.svg">
+        </div>
+        
+        <div class="nav-container">
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/schemes">Schemes</a></li>
+              <li><a href="/ask" id = "Ask">Ask</a></li>
+          
+            </ul>
+          </nav>
+        </div>
+      </header>
+      
+      
+      <footer>
+        <p>Copyright © 2024 Government Scheme Navigator</p>
+      </footer> 
+    
+      <script>
+        document.getElementById("view-schemes-btn").addEventListener("click", function() {
+          window.location.href = "/schemes"; 
+        });
+    
+        document.getElementById("Ask").addEventListener("click", function() {
+          window.location.href = "/ask"; 
+        });
+      </script>
+
+
+
+    <script>
+        function sendQuery() {
+            var query = document.getElementById("query").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/query", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("response").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send("query=" + query);
+        }
+    </script>
+</body>
+</html>
